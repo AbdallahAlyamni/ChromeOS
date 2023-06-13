@@ -132,7 +132,7 @@ function TaskBar() {
                     </Heading>
                   </HStack>
                 </MenuButton>
-                <MenuList bg="#393D40" border="0">
+                <MenuList bg="#393D40" border="0" borderRadius={"2xl"} m={"0 15px 8px 0"}>
                     <NotificationArea />
                 </MenuList>
               </Menu>

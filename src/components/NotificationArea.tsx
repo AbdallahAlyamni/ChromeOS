@@ -1,21 +1,87 @@
-import { Avatar, Button, HStack, Icon, VStack } from "@chakra-ui/react";
-import { MdLockOutline, MdOutlineKeyboardArrowDown, MdOutlinePowerSettingsNew, MdOutlineSettings } from "react-icons/md";
-
+import { Avatar, Button, HStack, Heading, Text, Icon, VStack, SliderTrack, SliderFilledTrack, SliderThumb, Slider, Box } from "@chakra-ui/react";
+import { MdArrowDropDown, MdBrightnessLow, MdLockOutline, MdNightlight, MdOutlineAccessibilityNew, MdOutlineBluetooth, MdOutlineDoNotDisturbOn, MdOutlineKeyboardArrowDown, MdOutlinePowerSettingsNew, MdOutlineSettings, MdSignalWifi4BarLock, MdVolumeUp } from "react-icons/md";
+import { RxDividerVertical } from "react-icons/rx";
 function NotificationArea() {
 
   return (
-          <VStack height="350px" width="300px">
-            <HStack height="15%" width="100%" justifyContent="center">
+          <VStack height="400px" width="350px">
+            <HStack height="15%" width="100%" justifyContent="space-around" px={"3"}>
             <Avatar size="sm" name="Abdallah Alyamni" src="../src/assets/ME_2022.png" />
-            <Button size="sm" borderRadius="full" p="0 5" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white">Sign out</Button>
+            <Button size="sm" borderRadius="full" p="0 5" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white" fontSize={"xs"}>Sign out</Button>
             <Button size="sm" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={5} as={MdLockOutline}/></Button>
             <Button size="sm" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white" ><Icon boxSize={5} as={MdOutlineSettings}/></Button>
             <Button size="sm" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={5} as={MdOutlinePowerSettingsNew}/></Button>
             <Button size="sm" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white" className="arrowButton"><Icon boxSize={5} as={MdOutlineKeyboardArrowDown}/></Button>
             </HStack>
-            <HStack bg="green" height="70%" width="100%">r</HStack>
-            <HStack bg="blue" height="30%" width="100%">r</HStack>
-            <HStack bg="yellow" height="15%" width="100%">g</HStack>
+            <HStack height="70%" width="100%">
+                <VStack height="100%" width="100%">
+                    <HStack height="100%" width="100%" justifyContent="space-around">
+                        <VStack spacing={1}>
+                        <Button size="md" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={6} as={MdSignalWifi4BarLock}/></Button>
+                        <HStack ml={"1"} spacing={0}><Text m={0} color="whiteAlpha.800" fontSize="11px">Alyamni</Text><Icon color="whiteAlpha.800" as={MdArrowDropDown} /></HStack>
+                        <Text m={0} color="whiteAlpha.600" fontSize="10px">Strong</Text>
+                        </VStack>
+                        <VStack spacing={1}>
+                        <Button size="md" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={6} as={MdOutlineBluetooth}/></Button>
+                        <HStack ml={"1"} spacing={0}><Text m={0} color="whiteAlpha.800" fontSize="11px">Bluetooth</Text><Icon color="whiteAlpha.800" as={MdArrowDropDown} /></HStack>
+                        <Text m={0} color="whiteAlpha.600" fontSize="10px">Off</Text>
+                        </VStack>
+                        <VStack spacing={1}>
+                        <Button size="md" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={6} as={MdOutlineDoNotDisturbOn}/></Button>
+                        <HStack ml={"1"} spacing={0}><Text m={0} color="whiteAlpha.800" fontSize="11px">Notifications</Text><Icon color="whiteAlpha.800" as={MdArrowDropDown} /></HStack>
+                        <Text m={0} color="whiteAlpha.600" fontSize="10px">Off for 2 apps</Text>
+                        </VStack>
+                    </HStack>
+                    <HStack height="100%" width="100%" justifyContent="space-around">
+                        <VStack spacing={1}>
+                        <Button size="md" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={6} as={MdNightlight}/></Button>
+                        <HStack ml={"1"} spacing={0}><Text m={0} color="whiteAlpha.800" fontSize="11px">Night Light</Text><Icon color="whiteAlpha.800" as={MdArrowDropDown} /></HStack>
+                        <Text m={0} color="whiteAlpha.600" fontSize="10px">Off</Text>
+                        </VStack>
+                        <VStack spacing={1}>
+                        <Button size="md" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={6} as={MdOutlineAccessibilityNew}/></Button>
+                        <HStack ml={"1"} spacing={0}><Text m={0} color="whiteAlpha.800" fontSize="11px">Accessibility</Text><Icon color="whiteAlpha.800" as={MdArrowDropDown} /></HStack>
+                        <Text m={0} color="whiteAlpha.600" fontSize="10px">Off</Text>
+                        </VStack>
+                        <VStack spacing={1} justifyContent={"center"} alignItems={"center"} visibility="hidden">
+                        <Button size="md" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={6} as={MdOutlineDoNotDisturbOn}/></Button>
+                        <HStack spacing={0}><Text m={0} color="whiteAlpha.800" fontSize="11px">Notifications</Text><Icon color="whiteAlpha.800" as={MdArrowDropDown} /></HStack>
+                        <Text m={0} color="whiteAlpha.600" fontSize="10px">Off for 2 apps</Text>
+                        </VStack>
+                    </HStack>
+                </VStack>
+            </HStack>
+            <HStack height="30%" width="100%">
+                <VStack width="inherit" spacing={5}>
+                    <HStack width="90%">
+                    <Button size="sm" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={5} as={MdVolumeUp}/></Button>
+                    <Slider aria-label='slider-ex-4' defaultValue={30}>
+                        <SliderTrack h={"0.5"} bg='white' borderRadius={"full"}>
+                            <SliderFilledTrack bg='#4485F5' />
+                        </SliderTrack>
+                        <SliderThumb bg='#4485F5' boxSize={3}>
+                            <Box bg='#4485F5' />
+                        </SliderThumb>
+                    </Slider>
+                    </HStack>
+                    <HStack width="90%">
+                    <Button size="sm" borderRadius="full" p="0" colorScheme="whiteAlpha" bgColor="whiteAlpha.200" color="white"><Icon boxSize={5} as={MdBrightnessLow}/></Button>
+                    <Slider aria-label='slider-ex-4' defaultValue={30}>
+                        <SliderTrack h={"0.5"} bg='white' borderRadius={"full"}>
+                            <SliderFilledTrack bg='#4485F5' />
+                        </SliderTrack>
+                        <SliderThumb bg='#4485F5' boxSize={3}>
+                            <Box bg='#4485F5' />
+                        </SliderThumb>
+                    </Slider>
+                    </HStack>
+                </VStack>
+            </HStack>
+            <HStack height="15%" width="100%" alignItems={"flex-end"} spacing={0}>
+                <Text  fontSize={"xs"} color={"white"} pl={"4"}>Sat Sep 22 </Text>
+                <Icon color={"whiteAlpha.500"} as={RxDividerVertical}/>
+                <Text fontSize={"xs"} color={"whiteAlpha.500"}>Battery Full</Text>
+            </HStack>
           </VStack>
   );
 }

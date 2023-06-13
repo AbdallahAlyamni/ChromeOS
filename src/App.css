@@ -12,7 +12,7 @@
     position: relative !important;
     top: -8px !important;
     display: flex !important;
-    align-items: end !important;
+    align-items: flex-end !important;
 }
 
 .logo {
