@@ -16,6 +16,7 @@ import {
   MdRadioButtonChecked,
 } from "react-icons/md";
 import NotificationArea from "./NotificationArea";
+import StarMenu from "./StarMenu";
 
 const APPS = [
   {
@@ -91,18 +92,23 @@ function TaskBar() {
   return (
           <HStack h="100%" marginX="1" justify="space-between" alignContent="center">
             <div>
-              <Button
-                size="sm"
-                colorScheme="blackAlpha"
-                bgColor="whiteAlpha.200"
-                color="white"
-                paddingX="2"
-                borderRadius="full"
-                variant="solid"
-                border="none"
-              >
-                <Icon as={MdRadioButtonChecked} />
-              </Button>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  size="sm"
+                  colorScheme="blackAlpha"
+                  bgColor="whiteAlpha.200"
+                  color="white"
+                  borderRadius="2xl"
+                  variant="solid"
+                  border="none"
+                >
+                    <Icon as={MdRadioButtonChecked} />
+                </MenuButton>
+                <MenuList bg="#1A2A4Bdd" border="0" borderRadius={"2xl"} m={"0 0 8px 0"} backdropFilter='auto' backdropBlur='20px' boxShadow='md'>
+                    <StarMenu />
+                </MenuList>
+              </Menu>
             </div>
             <div>
               {APPS.map((app) => {
@@ -132,7 +138,7 @@ function TaskBar() {
                     </Heading>
                   </HStack>
                 </MenuButton>
-                <MenuList bg="#393D40" border="0" borderRadius={"2xl"} m={"0 15px 8px 0"}>
+                <MenuList bg="#1A2A4Bdd" border="0" borderRadius={"2xl"} m={"0 15px 8px 0"} backdropFilter='auto' backdropBlur='20px' boxShadow='md'>
                     <NotificationArea />
                 </MenuList>
               </Menu>

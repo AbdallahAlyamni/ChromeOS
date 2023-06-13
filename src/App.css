@@ -5,6 +5,27 @@
   text-align: center;
 } */
 
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track { 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1A2A4BDD; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1A2A4BCC;
+  }
+
 .arrowButton{
     height: 46px !important;
     padding-bottom: 7px !important;
