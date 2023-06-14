@@ -6,6 +6,7 @@
 
 *{
     font-family: 'Arimo', system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+    user-select: none;
 }
 
 

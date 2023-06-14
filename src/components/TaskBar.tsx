@@ -17,39 +17,7 @@ import {
 } from "react-icons/md";
 import NotificationArea from "./NotificationArea";
 import StarMenu from "./StarMenu";
-
-const APPS = [
-  {
-    name: "Chrome",
-    icon: "../src/assets/apps/chrome.svg",
-    iconShape: "circle",
-    link: "",
-  },
-  {
-    name: "Gmail",
-    icon: "../src/assets/apps/gmail.svg",
-    iconShape: "non-circle",
-    link: "",
-  },
-  {
-    name: "Calendar",
-    icon: "../src/assets/apps/google-calendar.svg",
-    iconShape: "non-circle",
-    link: "",
-  },
-  {
-    name: "Photos",
-    icon: "../src/assets/apps/google-photos.svg",
-    iconShape: "non-circle",
-    link: "",
-  },
-  {
-    name: "Docs",
-    icon: "../src/assets/apps/docs.svg",
-    iconShape: "non-circle",
-    link: "",
-  },
-];
+import { TASKBAR_APPS } from "./Apps";
 
 function AppButton(props: any) {
   return (
@@ -111,7 +79,7 @@ function TaskBar() {
               </Menu>
             </div>
             <div>
-              {APPS.map((app) => {
+              {TASKBAR_APPS.map((app) => {
                 return (
                   <AppButton app={app} />
                 );

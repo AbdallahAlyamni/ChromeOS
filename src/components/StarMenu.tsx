@@ -1,218 +1,9 @@
-import { Avatar, Button, Image, HStack, Text, Icon, VStack, SliderTrack, SliderFilledTrack, SliderThumb, Slider, Box, Input, InputGroup, InputLeftElement, Divider, Wrap, WrapItem } from "@chakra-ui/react";
+import { Avatar, Button, Image, HStack, Text, Icon, VStack, SliderTrack, SliderFilledTrack, SliderThumb, Slider, Box, Input, InputGroup, InputLeftElement, Divider, Wrap, WrapItem, SimpleGrid } from "@chakra-ui/react";
 import { MdArrowDropDown, MdBrightnessLow, MdLockOutline, MdNightlight, MdOutlineAccessibilityNew, MdOutlineBluetooth, MdOutlineDoNotDisturbOn, MdOutlineKeyboardArrowDown, MdOutlinePowerSettingsNew, MdOutlineSettings, MdSignalWifi4BarLock, MdVolumeUp } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { NotiTextButton, NotiIconButton } from "./CustomButtons"
 import { PhoneIcon } from "@chakra-ui/icons";
-
-const APPS = [
-    {
-      name: "Chrome",
-      icon: "../src/assets/apps/chrome.svg",
-      iconShape: "circle",
-      link: "",
-    },
-    {
-      name: "Gmail",
-      icon: "../src/assets/apps/gmail.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-      name: "Calendar",
-      icon: "../src/assets/apps/google-calendar.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-      name: "Photos",
-      icon: "../src/assets/apps/google-photos.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-      name: "Docs",
-      icon: "../src/assets/apps/docs.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-  ];
-
-  const APPS2 = [
-    {
-      name: "Chrome",
-      icon: "../src/assets/apps/chrome.svg",
-      iconShape: "circle",
-      link: "",
-    },
-    {
-      name: "Gmail",
-      icon: "../src/assets/apps/gmail.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-      name: "Calendar",
-      icon: "../src/assets/apps/google-calendar.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-      name: "Photos",
-      icon: "../src/assets/apps/google-photos.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-      name: "Docs",
-      icon: "../src/assets/apps/docs.svg",
-      iconShape: "non-circle",
-      link: "",
-    },
-    {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
-        name: "Docs",
-        icon: "../src/assets/apps/docs.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-  ];
+import { STAR_MENU_APPS, STAR_MENU_DEFAULT_APPS } from "./Apps";
 
 function AppButtonWithText(props:any) {
     return (
@@ -232,6 +23,8 @@ function AppButtonWithText(props:any) {
             bg={props.app.iconShape == "circle" ? "" : "white"}
             p={props.app.iconShape == "circle" ? "0" : "1"}
             size="sm"
+            h={"40px"}
+            w={"40px"}
             name={props.app.name}
             src={props.app.icon}
           />
@@ -243,10 +36,10 @@ function AppButtonWithText(props:any) {
 function StarMenu() {
 
   return (
-          <VStack height="400px" width="550px">
-            <HStack height="10%" width="100%">
-            <InputGroup>
-                <InputLeftElement boxSize={"32px"} pl={"2"} pointerEvents='none'>
+          <VStack height="500px" width="500px">
+            <HStack height="10%" width="100%" align="flex-start">
+            <InputGroup pb={1} borderBottom={"1px"} borderColor={"blackAlpha.200"}>
+                <InputLeftElement boxSize={"32px"} pl={"3"} pointerEvents='none'>
                 <Image
                     boxSize='16px'
                     verticalAlign="center"
@@ -254,32 +47,30 @@ function StarMenu() {
                     alt='Google'
                 />
                 </InputLeftElement>
-                <Input size={"sm"} bg={"transparent"} variant='Flushed' placeholder='Search your tabs, files, apps and more' />
+                <Input size={"sm"} fontSize={"xs"} bg={"transparent"} variant='Flushed' color={"whiteAlpha.700"} placeholder='Search your tabs, files, apps and more' />
             </InputGroup>
             </HStack>
-            <HStack height="20%" width="100%" mx={"25px"} spacing={0} justify={"center"}>
-                {APPS.map(app => {
+            <SimpleGrid columns={5} spacing={10}>
+            {STAR_MENU_DEFAULT_APPS.map(app => {
                     return(
-                        <div style={{margin:"0 25px"}}>
+                        <div style={{margin:"0"}}>
                         <AppButtonWithText app={app}/>
                         </div>
                     );
                 })}
-            </HStack>
-            <Divider width={"85%"} borderColor={"whiteAlpha.300"} />
-            <HStack height="300px" width="100%" overflowY={"scroll"}>
-            <Wrap mt={"20px"} mx={"25px"} spacing='20px 0px' justify='flex-start'>
+            </SimpleGrid>
+            <Divider py={1} width={"85%"} borderColor={"blackAlpha.300"} />
+                <SimpleGrid columns={5} spacing={10} height="350px" overflowY={"scroll"} mt={5} mr={5} ml={7}>
             {
-                APPS2.map((app) => {
+                STAR_MENU_APPS.map((app) => {
                     return(
-                        <WrapItem mx={"25px"}>
+                        <WrapItem mx={"0"}>
                             <AppButtonWithText app={app}/>
                         </WrapItem>
                     );
                 })
             }
-            </Wrap>
-            </HStack>
+            </SimpleGrid>
           </VStack>
   );
 }
