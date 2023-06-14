@@ -18,8 +18,12 @@ import {
 import NotificationArea from "./NotificationArea";
 import StarMenu from "./StarMenu";
 import { TASKBAR_APPS } from "./Apps";
+import { useContext } from "react";
+import { MyContext } from "./MyContext";
 
 function AppButton(props: any) {
+    const { appWindow, setAppWindow } = useContext(MyContext);
+
   return (
     <Box
       as="button"
@@ -43,6 +47,7 @@ function AppButton(props: any) {
       _focusVisible={{
         borderColor: "#ffffff",
       }}
+      onClick={()=>{setAppWindow.toggle()}}
     >
       <Avatar
         bg={props.app.iconShape == "circle" ? "" : "white"}

@@ -9,17 +9,47 @@ import {
   VStack,
   Icon,
   useBoolean,
+  ScaleFade,
 } from "@chakra-ui/react";
 import TaskBar from "./TaskBar";
 import { Rnd } from "react-rnd";
 import { MdClose, MdMinimize, MdOutlineMinimize, MdOutlineSquare } from "react-icons/md";
 import Iframe from "react-iframe";
+import { MyContext } from "./MyContext";
+import { useState } from "react";
 
 function HomeScreen() {
 
-    const [window, setWindow] = useBoolean(true);
+    const [appWindow, setAppWindow] = useBoolean(false);
+    const [windowProps, setWindowProps] = useState({
+        x: 273,
+        y: 84,
+        width: 820,
+        height: 480,
+    });
+
+    const handleMaximize = () => {
+        if (windowProps.width == window.innerWidth) {
+            setWindowProps({
+                x: 273,
+                y: 84,
+                width: 820,
+                height: 480,
+            });
+        } else {
+            setWindowProps({
+                x: 0,
+                y: 0,
+                width: window.innerWidth,
+                height: window.innerHeight - 39,
+            });
+        }
+        
+        // console.log(e);
+    }
 
   return (
+    <MyContext.Provider value={{ appWindow, setAppWindow }}>
     <div className="w-screen h-screen bg-cover bg-[url('../src/assets/chromeos_wallpaper1.webp')]">
       <Grid
         templateAreas={`"main"
@@ -27,17 +57,32 @@ function HomeScreen() {
         gridTemplateRows={"94% 6%"}
         h="100%"
       >
-        <GridItem area={"main"}>
+        <GridItem area={"main"}>    
         <Rnd
-        style={{display: `${(window)?"block":"none"}`}}
+        style={{display: `${(appWindow)?"block":"none"}`}}
         default={{
-            x: 0,
-            y: 0,
+            x: 273,
+            y: 84,
             width: 820,
             height: 480,
         }}
         cancel=".cancelDrag"
-
+        position={{x:windowProps.x, y:windowProps.y}}
+        size={{ width: windowProps.width,  height: windowProps.height }}
+        onDragStop={(e, d) => { setWindowProps(
+            {
+                ...windowProps,
+                x: d.x,
+                y: d.y,
+            }
+        ) }}
+        onResize={(e, direction, ref, delta, position) => {
+            setWindowProps({
+            width: ref.offsetWidth,
+            height: ref.offsetHeight,
+            ...position,
+            });
+        }}
         >
         <VStack w="100%" height="100%" bg={"white"} borderRadius={"2xl"}>
         <Flex w="100%" h={5}>
@@ -58,7 +103,9 @@ function HomeScreen() {
           _focusVisible={{
             borderColor: "#ffffff",
           }}
-          onClick={()=>{setWindow.toggle()}}
+          onClick={()=>{
+            setAppWindow.toggle()
+        }}
         >
             <Icon color={"blackAlpha.700"} as={MdMinimize}></Icon>
         </Box>
@@ -73,6 +120,7 @@ function HomeScreen() {
           _focusVisible={{
             borderColor: "#ffffff",
           }}
+          onClick={handleMaximize}
         >
             <Icon color={"blackAlpha.700"} as={MdOutlineSquare}></Icon>
         </Box>
@@ -87,6 +135,10 @@ function HomeScreen() {
           _focusVisible={{
             borderColor: "#ffffff",
           }}
+          onClick={()=>{
+            setAppWindow.toggle()
+        }}
+          
         >
             <Icon style={{}} color={"blackAlpha.700"} as={MdClose}></Icon>
         </Box>
@@ -110,6 +162,7 @@ function HomeScreen() {
         </GridItem>
       </Grid>
     </div>
+    </MyContext.Provider>
   );
 }
 
