@@ -9,6 +9,7 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  useBoolean,
 } from "@chakra-ui/react";
 import {
   MdBattery90,
@@ -19,10 +20,10 @@ import NotificationArea from "./NotificationArea";
 import StarMenu from "./StarMenu";
 import { TASKBAR_APPS } from "./Apps";
 import { useContext } from "react";
-import { MyContext } from "./MyContext";
+import { AppWindowContext } from "./MyContext";
 
 function AppButton(props: any) {
-    const { appWindow, setAppWindow } = useContext(MyContext);
+    const {appWindow, setAppWindow} = useContext(AppWindowContext);
 
   return (
     <Box
@@ -47,7 +48,11 @@ function AppButton(props: any) {
       _focusVisible={{
         borderColor: "#ffffff",
       }}
-      onClick={()=>{setAppWindow.toggle()}}
+      onClick={()=>{
+        console.log(appWindow);
+        // setStarMenuVisibility.toggle();
+        setAppWindow.toggle();
+    }}
     >
       <Avatar
         bg={props.app.iconShape == "circle" ? "" : "white"}
@@ -62,10 +67,12 @@ function AppButton(props: any) {
 
 function TaskBar() {
 
+    const [starMenuVisibility, setStarMenuVisibility] = useBoolean(false);
+    
   return (
           <HStack h="100%" marginX="1" justify="space-between" alignContent="center">
             <div>
-              <Menu>
+              <Menu isOpen={starMenuVisibility}>
                 <MenuButton
                   as={Button}
                   size="sm"
@@ -75,18 +82,23 @@ function TaskBar() {
                   borderRadius="2xl"
                   variant="solid"
                   border="none"
+                  onClick={()=>{
+                    setStarMenuVisibility.toggle();
+                    console.log(starMenuVisibility);
+                    // setStarMenuVisibility.toggle();
+                }}
                 >
                     <Icon as={MdRadioButtonChecked} />
                 </MenuButton>
                 <MenuList bg="#1A2A4Bdd" border="0" borderRadius={"2xl"} m={"0 0 8px 0"} backdropFilter='auto' backdropBlur='20px' boxShadow='md'>
-                    <StarMenu />
+                    <StarMenu StarMenuVisibility={starMenuVisibility} setStarMenuVisibility={setStarMenuVisibility}  />
                 </MenuList>
               </Menu>
             </div>
             <div>
               {TASKBAR_APPS.map((app) => {
                 return (
-                  <AppButton app={app} />
+                  <AppButton key={app.name} app={app} />
                 );
               })}
             </div>

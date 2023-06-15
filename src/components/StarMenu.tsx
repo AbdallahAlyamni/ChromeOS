@@ -1,11 +1,12 @@
-import { Avatar, Button, Image, HStack, Text, Icon, VStack, SliderTrack, SliderFilledTrack, SliderThumb, Slider, Box, Input, InputGroup, InputLeftElement, Divider, Wrap, WrapItem, SimpleGrid } from "@chakra-ui/react";
-import { MdArrowDropDown, MdBrightnessLow, MdLockOutline, MdNightlight, MdOutlineAccessibilityNew, MdOutlineBluetooth, MdOutlineDoNotDisturbOn, MdOutlineKeyboardArrowDown, MdOutlinePowerSettingsNew, MdOutlineSettings, MdSignalWifi4BarLock, MdVolumeUp } from "react-icons/md";
-import { RxDividerVertical } from "react-icons/rx";
-import { NotiTextButton, NotiIconButton } from "./CustomButtons"
-import { PhoneIcon } from "@chakra-ui/icons";
+import { Avatar, HStack, Text, Image, VStack, Box, Input, InputGroup, InputLeftElement, Divider, WrapItem, SimpleGrid } from "@chakra-ui/react";
 import { STAR_MENU_APPS, STAR_MENU_DEFAULT_APPS } from "./Apps";
+import { useContext } from "react";
+import { AppWindowContext } from "./MyContext";
 
 function AppButtonWithText(props:any) {
+    
+    const {appWindow, setAppWindow} = useContext(AppWindowContext);
+
     return (
         <Box
           as="button"
@@ -18,6 +19,11 @@ function AppButtonWithText(props:any) {
           _focusVisible={{
             borderColor: "#ffffff",
           }}
+          onClick={()=>{
+            console.log(appWindow);
+            props.setStarMenuVisibility.off();
+            setAppWindow.toggle();
+        }}
         >
           <Avatar
             bg={props.app.iconShape == "circle" ? "" : "white"}
@@ -33,7 +39,7 @@ function AppButtonWithText(props:any) {
       );
 }
 
-function StarMenu() {
+function StarMenu(props:any) {
 
   return (
           <VStack height="500px" width="500px">
@@ -51,10 +57,10 @@ function StarMenu() {
             </InputGroup>
             </HStack>
             <SimpleGrid columns={5} spacing={10}>
-            {STAR_MENU_DEFAULT_APPS.map(app => {
+            {STAR_MENU_DEFAULT_APPS.map((app,index) => {
                     return(
-                        <div style={{margin:"0"}}>
-                        <AppButtonWithText app={app}/>
+                        <div key={app.name+index} style={{margin:"0"}}>
+                        <AppButtonWithText app={app} StarMenuVisibility={props.starMenuVisibility} setStarMenuVisibility={props.setStarMenuVisibility}/>
                         </div>
                     );
                 })}
@@ -62,9 +68,9 @@ function StarMenu() {
             <Divider py={1} width={"85%"} borderColor={"blackAlpha.300"} />
                 <SimpleGrid columns={5} spacing={10} height="350px" overflowY={"scroll"} mt={5} mr={5} ml={7}>
             {
-                STAR_MENU_APPS.map((app) => {
+                STAR_MENU_APPS.map((app,index) => {
                     return(
-                        <WrapItem mx={"0"}>
+                        <WrapItem key={app.name+index} mx={"0"}>
                             <AppButtonWithText app={app}/>
                         </WrapItem>
                     );
