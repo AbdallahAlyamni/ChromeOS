@@ -72,7 +72,7 @@ function TaskBar() {
   return (
           <HStack h="100%" marginX="1" justify="space-between" alignContent="center">
             <div>
-              <Menu isOpen={starMenuVisibility}>
+              <Menu isOpen={starMenuVisibility} onClose={()=>{setStarMenuVisibility.off()}}>
                 <MenuButton
                   as={Button}
                   size="sm"

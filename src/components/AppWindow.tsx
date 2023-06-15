@@ -107,6 +107,23 @@ function AppWindow() {
   return (
     <ScaleFade initialScale={0.9} in={appWindow}>
         <Rnd
+        resizeHandleClasses={{
+            top:'verticalHandleClass',
+            bottom:'verticalHandleClass',
+
+            topRight: 'antiDiagonalHandleClass',
+            bottomLeft: 'antiDiagonalHandleClass',
+
+            topLeft: 'mainDiagonalHandleClass',
+            bottomRight: 'mainDiagonalHandleClass',
+
+            right:'horizontalHandleClass',
+            left:'horizontalHandleClass'
+
+          }}
+
+        // dragHandleClassName="dragHandleClass"
+
         ref={c => { rnd = c; }}
         style={{display: `${(appWindow)?"block":"none"}`}}
         className={windowClassName}

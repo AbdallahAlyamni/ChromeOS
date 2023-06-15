@@ -22,7 +22,7 @@ function AppButtonWithText(props:any) {
           onClick={()=>{
             console.log(appWindow);
             props.setStarMenuVisibility.off();
-            setAppWindow.toggle();
+            setAppWindow.on();
         }}
         >
           <Avatar

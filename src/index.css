@@ -9,11 +9,37 @@
     user-select: none;
 }
 
+button{
+    cursor: url('/src/assets/chromeos_cursors/Link_Select.cur'), pointer;
+}
+input{
+    cursor: url('/src/assets/chromeos_cursors/Text_Select.cur'), text;
+}
+
+.verticalHandleClass{
+    cursor: url('/src/assets/chromeos_cursors/Vertical_Resize.cur'), e-resize !important;
+}
+.mainDiagonalHandleClass{
+    cursor: url('/src/assets/chromeos_cursors/Diagonal_Resize_1.cur'), nw-resize !important;
+}
+.antiDiagonalHandleClass{
+    cursor: url('/src/assets/chromeos_cursors/Diagonal_Resize_2.cur'), ne-resize !important;
+}
+.horizontalHandleClass{
+    cursor: url('/src/assets/chromeos_cursors/Horizontal_Resize.cur'), n-resize !important;
+}
+.dragHandleClass{
+    cursor: url('/src/assets/chromeos_cursors/Normal.cur') !important;
+}
+.react-draggable{
+    cursor: url('/src/assets/chromeos_cursors/Normal.cur'),auto !important;
+}
 
 :root {
   font-family: 'Arimo', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  cursor: url('/src/assets/chromeos_cursors/Normal.cur'),auto;
 
   overflow: hidden;
 
