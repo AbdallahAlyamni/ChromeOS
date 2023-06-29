@@ -37,7 +37,7 @@ function LockScreen() {
   };
 
   return (
-    <div className="w-screen h-screen bg-cover bg-[url('../src/assets/chromeos_wallpaper1.webp')]">
+    <div className="w-screen h-screen bg-cover bg-[url('../src/assets/images/wallpapers/chromeos_wallpaper1.webp')]">
       <div className="backdrop-blur-sm bg-slate-800/90 w-screen h-screen">
         <Grid
           templateAreas={`"main"
@@ -48,7 +48,7 @@ function LockScreen() {
           <GridItem area={"main"}>
             <AbsoluteCenter p="4" color="white" axis="both">
               <VStack spacing={4} align="center">
-                <Avatar size="xl" name="Abdallah ALyamni" src="../src/assets/ME_2022.png" />
+                <Avatar size="xl" name="Abdallah ALyamni" src="../src/assets/images/ME_2022.png" />
                 <Heading as="h5" size="sm">
                   Abdallah Alyamni
                 </Heading>

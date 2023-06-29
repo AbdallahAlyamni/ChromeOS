@@ -10,7 +10,7 @@ function HomeScreen() {
 
   return (
     <AppWindowProvider>
-    <div className="w-screen h-screen bg-cover bg-[url('../src/assets/chromeos_wallpaper1.webp')]">
+    <div className="w-screen h-screen bg-cover bg-[url('../src/assets/images/wallpapers/chromeos_wallpaper1.webp')]">
       <Grid
         templateAreas={`"main"
                   "footer"`}

@@ -1,11 +1,13 @@
 import { Avatar, HStack, Text, Image, VStack, Box, Input, InputGroup, InputLeftElement, Divider, WrapItem, SimpleGrid } from "@chakra-ui/react";
 import { STAR_MENU_APPS, STAR_MENU_DEFAULT_APPS } from "./Apps";
-import { useContext } from "react";
-import { AppWindowContext } from "./MyContext";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { on } from "./appWindowSlice";
 
 function AppButtonWithText(props:any) {
     
-    const {appWindow, setAppWindow} = useContext(AppWindowContext);
+    // const {appWindow, setAppWindow} = useContext(AppWindowContext);
+    const appWindow = useAppSelector((state) => state.appWindow.visibility);
+    const dispatch = useAppDispatch();
 
     return (
         <Box
@@ -22,7 +24,8 @@ function AppButtonWithText(props:any) {
           onClick={()=>{
             console.log(appWindow);
             props.setStarMenuVisibility.off();
-            setAppWindow.on();
+            // setAppWindow.on();
+            dispatch(on());
         }}
         >
           <Avatar
@@ -49,10 +52,10 @@ function StarMenu(props:any) {
                 <Image
                     boxSize='16px'
                     verticalAlign="center"
-                    src='../src/assets/google.svg'
+                    src='../src/assets/images/custom_icons/google.svg'
                     alt='Google'
                 />
-                </InputLeftElement>
+                </InputLeftElement> 
                 <Input size={"sm"} fontSize={"xs"} bg={"transparent"} variant='Flushed' color={"whiteAlpha.700"} placeholder='Search your tabs, files, apps and more' />
             </InputGroup>
             </HStack>

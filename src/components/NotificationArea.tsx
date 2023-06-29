@@ -8,7 +8,7 @@ function NotificationArea() {
   return (
           <VStack height="400px" width="350px">
             <HStack height="15%" width="100%" justifyContent="space-around" px={"3"}>
-            <Avatar size="sm" name="Abdallah Alyamni" src="../src/assets/ME_2022.png" />
+            <Avatar size="sm" name="Abdallah Alyamni" src="../src/assets/images/ME_2022.png" />
             <NotiTextButton text="Sign out"/>
             <NotiIconButton icon={MdLockOutline}/>
             <NotiIconButton icon={MdOutlineSettings}/>

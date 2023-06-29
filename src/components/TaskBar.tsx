@@ -19,11 +19,13 @@ import {
 import NotificationArea from "./NotificationArea";
 import StarMenu from "./StarMenu";
 import { TASKBAR_APPS } from "./Apps";
-import { useContext } from "react";
-import { AppWindowContext } from "./MyContext";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { toggle } from "./appWindowSlice";
 
 function AppButton(props: any) {
-    const {appWindow, setAppWindow} = useContext(AppWindowContext);
+    // const {appWindow, setAppWindow} = useContext(AppWindowContext);
+    const appWindow = useAppSelector((state) => state.appWindow.visibility);
+    const dispatch = useAppDispatch();
 
   return (
     <Box
@@ -51,7 +53,8 @@ function AppButton(props: any) {
       onClick={()=>{
         console.log(appWindow);
         // setStarMenuVisibility.toggle();
-        setAppWindow.toggle();
+        // setAppWindow.toggle();
+        dispatch(toggle());
     }}
     >
       <Avatar

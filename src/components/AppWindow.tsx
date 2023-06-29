@@ -11,8 +11,9 @@ import {
 import { Rnd } from "react-rnd";
 import { MdClose, MdMinimize, MdOutlineSquare } from "react-icons/md";
 import Iframe from "react-iframe";
-import {AppWindowContext } from "./MyContext";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from './hooks';
+import { off, toggle } from "./appWindowSlice";
 
 function WindowControlButton(props:any) {
 
@@ -51,7 +52,14 @@ function AppWindow() {
     let rnd:any;
     const [windowClassName, setWindowClassName] = useState("transition-all ease-in-out");
 
-    const {appWindow, setAppWindow} = useContext(AppWindowContext);
+    // const {appWindow, setAppWindow} = useContext(AppWindowContext);
+
+    // const count = useAppSelector((state) => state.counter.value);
+    // const dispatch = useAppDispatch();
+
+    const appWindow = useAppSelector((state) => state.appWindow.visibility);
+    const dispatch = useAppDispatch();
+
     const [windowProps, setWindowProps] = useState({
         x: (window.innerWidth - 820)/2,
         y: (window.innerHeight - 480)/2,
@@ -97,11 +105,14 @@ function AppWindow() {
 
     const handleMinimize = () => {
         console.log(windowProps);
-        setAppWindow.toggle();
+        dispatch(toggle());
+        // setAppWindow.toggle();
     }
 
     const handleClose = () => {
-        setAppWindow.off();
+        // dispatch(increment());
+        // setAppWindow.off();
+        dispatch(off());
     }
 
   return (
