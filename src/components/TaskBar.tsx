@@ -21,6 +21,7 @@ import StarMenu from "./StarMenu";
 import { TASKBAR_APPS } from "./Apps";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { toggle } from "./appWindowSlice";
+import { toggle as starMenuToggle } from "./starMenuSlice";
 
 function AppButton(props: any) {
     // const {appWindow, setAppWindow} = useContext(AppWindowContext);
@@ -70,12 +71,14 @@ function AppButton(props: any) {
 
 function TaskBar() {
 
-    const [starMenuVisibility, setStarMenuVisibility] = useBoolean(false);
+    // const [starMenuVisibility, setStarMenuVisibility] = useBoolean(false);
+    const starMenuVisibility = useAppSelector((state) => state.starMenu.visibility);
+    const dispatch = useAppDispatch();
     
   return (
           <HStack h="100%" marginX="1" justify="space-between" alignContent="center">
             <div>
-              <Menu isOpen={starMenuVisibility} onClose={()=>{setStarMenuVisibility.off()}}>
+              <Menu isOpen={starMenuVisibility} onClose={()=>{dispatch(starMenuToggle())}}>
                 <MenuButton
                   as={Button}
                   size="sm"
@@ -86,7 +89,7 @@ function TaskBar() {
                   variant="solid"
                   border="none"
                   onClick={()=>{
-                    setStarMenuVisibility.toggle();
+                    dispatch(starMenuToggle());
                     console.log(starMenuVisibility);
                     // setStarMenuVisibility.toggle();
                 }}
@@ -94,7 +97,7 @@ function TaskBar() {
                     <Icon as={MdRadioButtonChecked} />
                 </MenuButton>
                 <MenuList bg="#1A2A4Bdd" border="0" borderRadius={"2xl"} m={"0 0 8px 0"} backdropFilter='auto' backdropBlur='20px' boxShadow='md'>
-                    <StarMenu StarMenuVisibility={starMenuVisibility} setStarMenuVisibility={setStarMenuVisibility}  />
+                    <StarMenu />
                 </MenuList>
               </Menu>
             </div>

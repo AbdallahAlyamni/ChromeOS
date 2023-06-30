@@ -71,3 +71,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.starMenuSearchItem{
+    @apply pl-4 py-2.5 w-full border-l-2 border-l-transparent;
+    
+}
+.starMenuSearchItem:hover{
+    @apply bg-white bg-opacity-5 border-l-2 border-l-slate-300;
+    @apply transition ease-in-out duration-300;
+}
+
+.starMenuContainer{
+    
+        width: 100%;
+        height: 100%;
+        list-style: none;
+        /* grid-template-rows: repeat(2, 1fr); */
+}

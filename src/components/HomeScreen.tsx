@@ -3,13 +3,11 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import TaskBar from "./TaskBar";
-import { AppWindowProvider } from "./MyContext";
 import AppWindow from "./AppWindow";
 
 function HomeScreen() {
 
   return (
-    <AppWindowProvider>
     <div className="w-screen h-screen bg-cover bg-[url('../src/assets/images/wallpapers/chromeos_wallpaper1.webp')]">
       <Grid
         templateAreas={`"main"
@@ -25,7 +23,6 @@ function HomeScreen() {
         </GridItem>
       </Grid>
     </div>
-    </AppWindowProvider>
   );
 }
 

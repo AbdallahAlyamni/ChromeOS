@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import appWindowSlice from './appWindowSlice'
+import starMenuSlice from './starMenuSlice'
 
 export const store = configureStore({
     reducer: {
-      appWindow: appWindowSlice
+      appWindow: appWindowSlice,
+      starMenu: starMenuSlice
     },
   })
 
