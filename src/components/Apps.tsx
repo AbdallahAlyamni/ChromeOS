@@ -168,12 +168,6 @@ const STAR_MENU_DEFAULT_APPS = [
         link: "",
       },
       {
-        name: "Photos",
-        icon: "../src/assets/images/apps/photos.svg",
-        iconShape: "non-circle",
-        link: "",
-      },
-      {
         name: "One",
         icon: "../src/assets/images/apps/One.svg",
         iconShape: "non-circle",

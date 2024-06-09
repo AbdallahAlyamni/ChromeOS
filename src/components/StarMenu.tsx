@@ -76,7 +76,7 @@ function StarMenu(props: any) {
       //   }}
       //   animate={menuSearch?"open":"closed"}
     >
-      <StarMenuSearch />
+      <StarMenuMain />
     </VStack>
   );
 }
