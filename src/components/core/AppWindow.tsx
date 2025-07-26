@@ -1,6 +1,6 @@
-import DraggableWrapper from "./dragble-wrapper";
-import { Button } from "./ui/button";
-import { useEffect, useRef, useState } from "react";
+import DraggableWrapper from "../common/dragble-wrapper";
+import { Button } from "../ui/button";
+import { Children, useEffect, useRef, useState } from "react";
 import { ReactComponent as CloseIcon } from "@/assets/icons/CloseIcon.svg";
 import { ReactComponent as MaximizeIcon } from "@/assets/icons/MaximizeIcon.svg";
 import { ReactComponent as MinimizeIcon } from "@/assets/icons/MinimizeIcon.svg";
@@ -9,7 +9,7 @@ import { motion, useAnimate } from "motion/react";
 import { openedAppsAtom } from "@/atoms/app";
 import { useAtom } from "jotai";
 
-const AppWindow = ({ app }) => {
+const AppWindow = ({ app, render }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(app.isMinimized);
   const [openedApps, setOpenedApps] = useAtom(openedAppsAtom);
@@ -59,10 +59,12 @@ const AppWindow = ({ app }) => {
         defaultPosition={{ x: x, y: y }}
         className="rounded-xs border-0 p-0"
         title={app.name}
-        width="min-w-96"
+        width="min-w-fit"
         height="min-h-96"
         fullScreenWidth="100%"
         fullScreenHeight="100%"
+        customWidth={app.defaultSize?.width ?? 530}
+        customHeight={app.defaultSize?.height ?? 550}
         onFullScreenChange={setIsFullScreen}
         onMinimizeChange={setIsMinimized}
         closeButton={
@@ -85,19 +87,7 @@ const AppWindow = ({ app }) => {
           </Button>
         }
       >
-        <iframe
-          src="https://www.google.com/webhp?igu=1"
-          width="100%"
-          height="100%"
-          style={{
-            borderBottomLeftRadius: "1rem",
-            borderBottomRightRadius: "1rem",
-            display: "block",
-            position: "relative",
-          }}
-          frameBorder="0"
-          allowFullScreen
-        />
+        { render }
       </DraggableWrapper>
     </motion.div>
   );

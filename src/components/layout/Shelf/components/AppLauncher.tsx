@@ -9,10 +9,31 @@ import { useState } from "react";
 import { useDebounce } from "use-debounce";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react"
+import { openedAppsAtom } from "@/atoms/app";
+import { useAtom } from "jotai";
 
 const AppLauncher = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTextValue] = useDebounce(searchText, 300);
+
+  const [openedApps, setOpenedApps] = useAtom(openedAppsAtom);
+
+  const openApp = (newApp) => {
+    setOpenedApps((prev) => {
+      const index = prev.findIndex((app) => app.id === newApp.id);
+      if (index === -1) {
+        // Not found → add new app
+        console.log("t", [...prev, newApp]);
+        return [...prev, newApp];
+      } else {
+        // Found → update app
+        const updated = [...prev];
+        updated[index] = { ...updated[index], isMinimized: false }; // merge fields
+        console.log("u", updated);
+        return updated;
+      }
+    });
+  };
 
   return (
     <div className="size-full flex flex-col rounded-xl border-[0.5px] border-background">
@@ -37,6 +58,7 @@ const AppLauncher = () => {
                 return (
                   <div key={app.name + index} className="flex justify-start m-0 p-0">
                     <Button
+                     onClick={() => openApp(app)}
                       key={app.name}
                       variant={"ghost"}
                       className={cn(
@@ -74,6 +96,7 @@ const AppLauncher = () => {
                         <div key={app.name + index} className="flex justify-center m-0">
                           <Button
                             key={app.name}
+                            onClick={() => openApp(app)}
                             variant={"ghost"}
                             className="flex flex-col p-0 h-full w-fit font-medium hover:bg-transparent"
                           >
@@ -95,6 +118,7 @@ const AppLauncher = () => {
                   <div key={app.name + index} style={{ margin: "0" }} className="flex justify-center">
                     <Button
                       key={app.name}
+                      onClick={() => openApp(app)}
                       variant={"ghost"}
                       className="flex flex-col p-0 h-full w-fit font-medium hover:bg-transparent"
                     >

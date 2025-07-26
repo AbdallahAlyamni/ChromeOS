@@ -4,7 +4,7 @@ import { ChevronUp } from "lucide-react";
 import CloseIcon from "@mui/icons-material/Close";
 import SquareOutlinedIcon from "@mui/icons-material/SquareOutlined";
 import MinimizeOutlinedIcon from "@mui/icons-material/MinimizeOutlined";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { animate } from "motion/react";
 
@@ -18,6 +18,8 @@ interface DraggableWrapperProps {
   onMinimizeChange?: (isMinimized: boolean) => void;
   width?: string;
   height?: string;
+  customWidth?: number,
+  customHeight?: number,
   fullScreenWidth?: string;
   fullScreenHeight?: string;
   closeButton?: ReactNode;
@@ -39,6 +41,8 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
   onMinimizeChange,
   width = "w-64",
   height = "h-64",
+  customWidth = 530,
+  customHeight = 550,
   fullScreenWidth = "100%",
   fullScreenHeight = "100%",
   headerContent,
@@ -61,7 +65,7 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
   const [customSize, setCustomSize] = useState<{
     width?: number;
     height?: number;
-  }>({ width: 530, height:  550});
+  }>({ width: customWidth, height:  customHeight});
   const cardRef = useRef<HTMLDivElement>(null);
 
   const onMouseDown = useCallback(
