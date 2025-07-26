@@ -1,12 +1,12 @@
 import React, { useState, useRef, useCallback, useEffect, ReactNode } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronUp } from "lucide-react";
+// import { ChevronUp } from "lucide-react";
 import CloseIcon from "@mui/icons-material/Close";
 import SquareOutlinedIcon from "@mui/icons-material/SquareOutlined";
 import MinimizeOutlinedIcon from "@mui/icons-material/MinimizeOutlined";
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { animate } from "motion/react";
+// import { animate } from "motion/react";
 
 interface DraggableWrapperProps {
   children: ReactNode;
@@ -40,7 +40,7 @@ const DraggableWrapper: React.FC<DraggableWrapperProps> = ({
   onFullScreenChange,
   onMinimizeChange,
   width = "w-64",
-  height = "h-64",
+//   height = "h-64",
   customWidth = 530,
   customHeight = 550,
   fullScreenWidth = "100%",

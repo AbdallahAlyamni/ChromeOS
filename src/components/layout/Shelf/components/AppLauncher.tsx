@@ -16,7 +16,7 @@ const AppLauncher = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTextValue] = useDebounce(searchText, 300);
 
-  const [openedApps, setOpenedApps] = useAtom(openedAppsAtom);
+  const [_, setOpenedApps] = useAtom(openedAppsAtom);
 
   const openApp = (newApp) => {
     setOpenedApps((prev) => {

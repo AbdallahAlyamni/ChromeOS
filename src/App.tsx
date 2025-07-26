@@ -1,6 +1,6 @@
-import Settings from './components/apps/Settings'
+// import Settings from './components/apps/Settings'
 import Desktop from './components/core/Desktop'
-import { LockScreen } from './components/core/LockScreen'
+// import { LockScreen } from './components/core/LockScreen'
 
 function App() {
 

@@ -6,7 +6,7 @@ export const themeAtom = atom<Theme>("light");
 
 export const themeWithStorageAtom = atom(
   (get) => get(themeAtom),
-  (get, set, newTheme: Theme) => {
+  (_, set, newTheme: Theme) => {
     set(themeAtom, newTheme);
     localStorage.setItem("theme", newTheme);
   }
@@ -14,7 +14,7 @@ export const themeWithStorageAtom = atom(
 
 export const initializeThemeAtom = atom(
   null,
-  (get, set) => {
+  (_, set) => {
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     if (savedTheme) {
       set(themeAtom, savedTheme);

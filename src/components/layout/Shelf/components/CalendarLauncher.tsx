@@ -1,17 +1,17 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Slider } from "@/components/ui/slider";
+// import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { format } from "date-fns";
-import { Formatters } from "react-day-picker";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { Formatters } from "react-day-picker";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const CalendarLauncher = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   const simplifiedWeekdayFormatters = {
-    formatWeekdayName: (day: Date, options) => {
+    formatWeekdayName: (day: Date, _) => {
       return format(day, "EEEEE" /*, { locale: dateFnsLocaleObject }*/);
     },
   };
@@ -45,14 +45,14 @@ const CalendarLauncher = () => {
             "size-8 p-0 rounded-full text-secondary font-normal aria-selected:opacity-100 aria-selected:font-medium"
           ),
         }}
-        components={{
-            IconLeft: ({ className, ...props }) => (
-              <ChevronLeft className={cn("size-5", className)} strokeWidth={2.5} {...props} />
-            ),
-            IconRight: ({ className, ...props }) => (
-              <ChevronRight className={cn("size-5", className)} strokeWidth={2.5} {...props} />
-            ),
-          }}
+        // components={{
+        //     IconLeft: ({ className, ...props }) => (
+        //       <ChevronLeft className={cn("size-5", className)} strokeWidth={2.5} {...props} />
+        //     ),
+        //     IconRight: ({ className, ...props }) => (
+        //       <ChevronRight className={cn("size-5", className)} strokeWidth={2.5} {...props} />
+        //     ),
+        //   }}
       />
     </div>
   );

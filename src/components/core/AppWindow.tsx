@@ -1,11 +1,11 @@
 import DraggableWrapper from "../common/dragble-wrapper";
 import { Button } from "../ui/button";
-import { Children, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as CloseIcon } from "@/assets/icons/CloseIcon.svg";
 import { ReactComponent as MaximizeIcon } from "@/assets/icons/MaximizeIcon.svg";
 import { ReactComponent as MinimizeIcon } from "@/assets/icons/MinimizeIcon.svg";
 import { ReactComponent as UnmaximizeIcon } from "@/assets/icons/UnmaximizeIcon.svg";
-import { motion, useAnimate } from "motion/react";
+import { motion } from "motion/react";
 import { openedAppsAtom } from "@/atoms/app";
 import { useAtom } from "jotai";
 

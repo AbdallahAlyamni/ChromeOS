@@ -3,10 +3,10 @@ import AppWindow from "./AppWindow";
 import { Shelf } from "../layout/Shelf/Shelf";
 import { openedAppsAtom } from "@/atoms/app";
 import { useEffect } from "react";
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
 
 function Desktop() {
-  const [openedApps, setOpenedApps] = useAtom(openedAppsAtom);
+  const [openedApps, _] = useAtom(openedAppsAtom);
 
   useEffect(() => {
     console.log("opend", openedApps);

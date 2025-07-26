@@ -10,7 +10,7 @@ import { Menu, Search, Minus, Square, X, FileText, FolderOpen, Save, SaveAll, Se
 export default function Component() {
   const [content, setContent] = useState("de")
   const [searchQuery, setSearchQuery] = useState("")
-  const [fileName, setFileName] = useState("Untitled 1")
+  const [fileName, _] = useState("Untitled 1")
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(true)
 
   const handleContentChange = (value: string) => {
